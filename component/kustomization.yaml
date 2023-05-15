@@ -1,0 +1,15 @@
+# component/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+replacements:
+- source: 
+     kind: Service
+     name:  cass-operator-webhook-service
+     fieldPath: metadata.namespace 
+  targets:
+     - select:
+         kind: Certificate
+         group: cert-manager.io
+         version: v1
+       fieldPaths:
+         - .spec.dnsNames.0

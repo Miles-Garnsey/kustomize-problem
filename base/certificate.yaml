@@ -1,0 +1,9 @@
+# base/certificate.yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cass-operator-serving-cert
+  namespace: cass-operator
+spec:
+  dnsNames:
+    - webhook-service.system.svc
